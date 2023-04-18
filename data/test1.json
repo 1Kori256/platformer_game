@@ -1,0 +1,2381 @@
+{
+    "6;1": {
+        "pos": [
+            6,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "7;1": {
+        "pos": [
+            7,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "8;1": {
+        "pos": [
+            8,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "9;1": {
+        "pos": [
+            9,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "10;1": {
+        "pos": [
+            10,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "11;1": {
+        "pos": [
+            11,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "6;0": {
+        "pos": [
+            6,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 4
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "7;0": {
+        "pos": [
+            7,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 4
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "8;0": {
+        "pos": [
+            8,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 4
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "9;0": {
+        "pos": [
+            9,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 4
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 5
+            }
+        ]
+    },
+    "10;0": {
+        "pos": [
+            10,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 4
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 3
+            }
+        ]
+    },
+    "11;0": {
+        "pos": [
+            11,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 4
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "5;0": {
+        "pos": [
+            5,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 3
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 3
+            }
+        ]
+    },
+    "5;1": {
+        "pos": [
+            5,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            }
+        ]
+    },
+    "6;-1": {
+        "pos": [
+            6,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": -1,
+                "tileset": "tileset_foliage",
+                "tile": 5
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            },
+            {
+                "depth": 1,
+                "tileset": "spawn",
+                "tile": 0
+            }
+        ]
+    },
+    "8;-1": {
+        "pos": [
+            8,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": -1,
+                "tileset": "tileset_foliage",
+                "tile": 5
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "9;-1": {
+        "pos": [
+            9,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": -1,
+                "tileset": "tileset_foliage",
+                "tile": 6
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 5
+            }
+        ]
+    },
+    "7;-1": {
+        "pos": [
+            7,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": -1,
+                "tileset": "tileset_foliage",
+                "tile": 5
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "8;-3": {
+        "pos": [
+            8,
+            -3
+        ],
+        "tiles": [
+            {
+                "depth": -2,
+                "tileset": "tileset_foliage",
+                "tile": 9
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "5;-1": {
+        "pos": [
+            5,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": -2,
+                "tileset": "tileset_foliage",
+                "tile": 7
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 3
+            }
+        ]
+    },
+    "11;-1": {
+        "pos": [
+            11,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": -2,
+                "tileset": "tileset_foliage",
+                "tile": 1
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "10;-1": {
+        "pos": [
+            10,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": -2,
+                "tileset": "tileset_foliage",
+                "tile": 8
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 3
+            }
+        ]
+    },
+    "12;0": {
+        "pos": [
+            12,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 12
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "12;1": {
+        "pos": [
+            12,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "12;-1": {
+        "pos": [
+            12,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "13;-1": {
+        "pos": [
+            13,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "13;1": {
+        "pos": [
+            13,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "13;0": {
+        "pos": [
+            13,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "14;1": {
+        "pos": [
+            14,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 8
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "14;0": {
+        "pos": [
+            14,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 8
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "14;-1": {
+        "pos": [
+            14,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 8
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 1
+            }
+        ]
+    },
+    "14;-2": {
+        "pos": [
+            14,
+            -2
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 8
+            }
+        ]
+    },
+    "14;-3": {
+        "pos": [
+            14,
+            -3
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 5
+            }
+        ]
+    },
+    "13;-3": {
+        "pos": [
+            13,
+            -3
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 0
+            }
+        ]
+    },
+    "13;-2": {
+        "pos": [
+            13,
+            -2
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 12
+            }
+        ]
+    },
+    "12;-2": {
+        "pos": [
+            12,
+            -2
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 3
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 1
+            }
+        ]
+    },
+    "12;-3": {
+        "pos": [
+            12,
+            -3
+        ],
+        "tiles": [
+            {
+                "depth": -1,
+                "tileset": "tileset_foliage_2",
+                "tile": 1
+            }
+        ]
+    },
+    "8;-5": {
+        "pos": [
+            8,
+            -5
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 1
+            }
+        ]
+    },
+    "9;-5": {
+        "pos": [
+            9,
+            -5
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 2
+            },
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 3
+            }
+        ]
+    },
+    "9;-4": {
+        "pos": [
+            9,
+            -4
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 5
+            },
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 6
+            }
+        ]
+    },
+    "9;-3": {
+        "pos": [
+            9,
+            -3
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 5
+            }
+        ]
+    },
+    "9;-2": {
+        "pos": [
+            9,
+            -2
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 5
+            }
+        ]
+    },
+    "5;-2": {
+        "pos": [
+            5,
+            -2
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 3
+            }
+        ]
+    },
+    "6;-2": {
+        "pos": [
+            6,
+            -2
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "7;-2": {
+        "pos": [
+            7,
+            -2
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "8;-4": {
+        "pos": [
+            8,
+            -4
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "8;-2": {
+        "pos": [
+            8,
+            -2
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "7;-5": {
+        "pos": [
+            7,
+            -5
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 0
+            }
+        ]
+    },
+    "5;-3": {
+        "pos": [
+            5,
+            -3
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 0
+            }
+        ]
+    },
+    "6;-3": {
+        "pos": [
+            6,
+            -3
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 1
+            }
+        ]
+    },
+    "7;-4": {
+        "pos": [
+            7,
+            -4
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 3
+            }
+        ]
+    },
+    "7;-3": {
+        "pos": [
+            7,
+            -3
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 13
+            }
+        ]
+    },
+    "10;-2": {
+        "pos": [
+            10,
+            -2
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 0
+            }
+        ]
+    },
+    "11;-2": {
+        "pos": [
+            11,
+            -2
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 1
+            }
+        ]
+    },
+    "15;-1": {
+        "pos": [
+            15,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 1
+            }
+        ]
+    },
+    "16;-1": {
+        "pos": [
+            16,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 1
+            }
+        ]
+    },
+    "17;-1": {
+        "pos": [
+            17,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 1
+            }
+        ]
+    },
+    "18;-1": {
+        "pos": [
+            18,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 1
+            },
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            }
+        ]
+    },
+    "15;0": {
+        "pos": [
+            15,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "15;1": {
+        "pos": [
+            15,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "16;0": {
+        "pos": [
+            16,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "16;1": {
+        "pos": [
+            16,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "17;0": {
+        "pos": [
+            17,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "17;1": {
+        "pos": [
+            17,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "18;0": {
+        "pos": [
+            18,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            },
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            }
+        ]
+    },
+    "18;1": {
+        "pos": [
+            18,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            },
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            }
+        ]
+    },
+    "18;-4": {
+        "pos": [
+            18,
+            -4
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            },
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 8
+            }
+        ]
+    },
+    "18;-3": {
+        "pos": [
+            18,
+            -3
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            }
+        ]
+    },
+    "18;-2": {
+        "pos": [
+            18,
+            -2
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            }
+        ]
+    },
+    "19;-5": {
+        "pos": [
+            19,
+            -5
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 4
+            }
+        ]
+    },
+    "20;-5": {
+        "pos": [
+            20,
+            -5
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 5
+            }
+        ]
+    },
+    "20;-4": {
+        "pos": [
+            20,
+            -4
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 8
+            }
+        ]
+    },
+    "20;-3": {
+        "pos": [
+            20,
+            -3
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 8
+            }
+        ]
+    },
+    "20;-2": {
+        "pos": [
+            20,
+            -2
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 8
+            }
+        ]
+    },
+    "20;-1": {
+        "pos": [
+            20,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 8
+            }
+        ]
+    },
+    "20;0": {
+        "pos": [
+            20,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 8
+            }
+        ]
+    },
+    "20;1": {
+        "pos": [
+            20,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 8
+            }
+        ]
+    },
+    "19;-4": {
+        "pos": [
+            19,
+            -4
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "19;-3": {
+        "pos": [
+            19,
+            -3
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "19;-2": {
+        "pos": [
+            19,
+            -2
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "19;0": {
+        "pos": [
+            19,
+            0
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "19;-1": {
+        "pos": [
+            19,
+            -1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "19;1": {
+        "pos": [
+            19,
+            1
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "18;-9": {
+        "pos": [
+            18,
+            -9
+        ],
+        "tiles": [
+            {
+                "depth": -2,
+                "tileset": "tileset_foliage",
+                "tile": 0
+            }
+        ]
+    },
+    "18;-6": {
+        "pos": [
+            18,
+            -6
+        ],
+        "tiles": [
+            {
+                "depth": -2,
+                "tileset": "tileset_foliage",
+                "tile": 2
+            },
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 5
+            }
+        ]
+    },
+    "7;-10": {
+        "pos": [
+            7,
+            -10
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 3
+            }
+        ]
+    },
+    "8;-10": {
+        "pos": [
+            8,
+            -10
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 4
+            }
+        ]
+    },
+    "10;-10": {
+        "pos": [
+            10,
+            -10
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 4
+            }
+        ]
+    },
+    "9;-10": {
+        "pos": [
+            9,
+            -10
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 4
+            }
+        ]
+    },
+    "11;-10": {
+        "pos": [
+            11,
+            -10
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 4
+            }
+        ]
+    },
+    "12;-10": {
+        "pos": [
+            12,
+            -10
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 5
+            },
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 1
+            }
+        ]
+    },
+    "7;-9": {
+        "pos": [
+            7,
+            -9
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            }
+        ]
+    },
+    "7;-8": {
+        "pos": [
+            7,
+            -8
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 9
+            }
+        ]
+    },
+    "8;-9": {
+        "pos": [
+            8,
+            -9
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "9;-9": {
+        "pos": [
+            9,
+            -9
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "10;-9": {
+        "pos": [
+            10,
+            -9
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "11;-9": {
+        "pos": [
+            11,
+            -9
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 7
+            }
+        ]
+    },
+    "12;-9": {
+        "pos": [
+            12,
+            -9
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 8
+            },
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 4
+            }
+        ]
+    },
+    "12;-8": {
+        "pos": [
+            12,
+            -8
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 11
+            },
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 7
+            }
+        ]
+    },
+    "8;-8": {
+        "pos": [
+            8,
+            -8
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 10
+            }
+        ]
+    },
+    "9;-8": {
+        "pos": [
+            9,
+            -8
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 10
+            },
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 3
+            }
+        ]
+    },
+    "11;-8": {
+        "pos": [
+            11,
+            -8
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 10
+            },
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 5
+            }
+        ]
+    },
+    "10;-8": {
+        "pos": [
+            10,
+            -8
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 10
+            },
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 4
+            }
+        ]
+    },
+    "9;-7": {
+        "pos": [
+            9,
+            -7
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 3
+            }
+        ]
+    },
+    "9;-6": {
+        "pos": [
+            9,
+            -6
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 3
+            }
+        ]
+    },
+    "10;-4": {
+        "pos": [
+            10,
+            -4
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 7
+            }
+        ]
+    },
+    "11;-4": {
+        "pos": [
+            11,
+            -4
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 8
+            }
+        ]
+    },
+    "11;-5": {
+        "pos": [
+            11,
+            -5
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 5
+            }
+        ]
+    },
+    "11;-6": {
+        "pos": [
+            11,
+            -6
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 5
+            }
+        ]
+    },
+    "11;-7": {
+        "pos": [
+            11,
+            -7
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 5
+            }
+        ]
+    },
+    "10;-7": {
+        "pos": [
+            10,
+            -7
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 4
+            }
+        ]
+    },
+    "10;-6": {
+        "pos": [
+            10,
+            -6
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 4
+            }
+        ]
+    },
+    "10;-5": {
+        "pos": [
+            10,
+            -5
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 4
+            }
+        ]
+    },
+    "13;-10": {
+        "pos": [
+            13,
+            -10
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 1
+            }
+        ]
+    },
+    "14;-10": {
+        "pos": [
+            14,
+            -10
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 1
+            }
+        ]
+    },
+    "15;-10": {
+        "pos": [
+            15,
+            -10
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 2
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 3
+            }
+        ]
+    },
+    "15;-9": {
+        "pos": [
+            15,
+            -9
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 10
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 6
+            }
+        ]
+    },
+    "16;-9": {
+        "pos": [
+            16,
+            -9
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 2
+            },
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 7
+            }
+        ]
+    },
+    "16;-8": {
+        "pos": [
+            16,
+            -8
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 10
+            }
+        ]
+    },
+    "17;-8": {
+        "pos": [
+            17,
+            -8
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 2
+            }
+        ]
+    },
+    "17;-7": {
+        "pos": [
+            17,
+            -7
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 10
+            }
+        ]
+    },
+    "18;-7": {
+        "pos": [
+            18,
+            -7
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 2
+            }
+        ]
+    },
+    "13;-9": {
+        "pos": [
+            13,
+            -9
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 4
+            }
+        ]
+    },
+    "14;-9": {
+        "pos": [
+            14,
+            -9
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 4
+            }
+        ]
+    },
+    "15;-8": {
+        "pos": [
+            15,
+            -8
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 4
+            }
+        ]
+    },
+    "16;-7": {
+        "pos": [
+            16,
+            -7
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 4
+            }
+        ]
+    },
+    "14;-8": {
+        "pos": [
+            14,
+            -8
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 4
+            }
+        ]
+    },
+    "15;-7": {
+        "pos": [
+            15,
+            -7
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 4
+            }
+        ]
+    },
+    "17;-6": {
+        "pos": [
+            17,
+            -6
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 4
+            }
+        ]
+    },
+    "16;-6": {
+        "pos": [
+            16,
+            -6
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 4
+            }
+        ]
+    },
+    "13;-8": {
+        "pos": [
+            13,
+            -8
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 9
+            }
+        ]
+    },
+    "14;-7": {
+        "pos": [
+            14,
+            -7
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 9
+            }
+        ]
+    },
+    "15;-6": {
+        "pos": [
+            15,
+            -6
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 9
+            }
+        ]
+    },
+    "15;-5": {
+        "pos": [
+            15,
+            -5
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 6
+            }
+        ]
+    },
+    "16;-5": {
+        "pos": [
+            16,
+            -5
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 9
+            }
+        ]
+    },
+    "17;-4": {
+        "pos": [
+            17,
+            -4
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 7
+            }
+        ]
+    },
+    "16;-4": {
+        "pos": [
+            16,
+            -4
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 6
+            }
+        ]
+    },
+    "17;-5": {
+        "pos": [
+            17,
+            -5
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 4
+            }
+        ]
+    },
+    "18;-5": {
+        "pos": [
+            18,
+            -5
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 5
+            },
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 3
+            }
+        ]
+    },
+    "14;-6": {
+        "pos": [
+            14,
+            -6
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 6
+            }
+        ]
+    },
+    "13;-7": {
+        "pos": [
+            13,
+            -7
+        ],
+        "tiles": [
+            {
+                "depth": -6,
+                "tileset": "tileset_crystal_background",
+                "tile": 6
+            }
+        ]
+    },
+    "7;-14": {
+        "pos": [
+            7,
+            -14
+        ],
+        "tiles": [
+            {
+                "depth": -2,
+                "tileset": "tileset_foliage_2",
+                "tile": 2
+            }
+        ]
+    },
+    "7;-11": {
+        "pos": [
+            7,
+            -11
+        ],
+        "tiles": [
+            {
+                "depth": -1,
+                "tileset": "tileset_foliage_2",
+                "tile": 4
+            }
+        ]
+    },
+    "12;-11": {
+        "pos": [
+            12,
+            -11
+        ],
+        "tiles": [
+            {
+                "depth": -2,
+                "tileset": "tileset_foliage_2",
+                "tile": 3
+            }
+        ]
+    },
+    "9;-11": {
+        "pos": [
+            9,
+            -11
+        ],
+        "tiles": [
+            {
+                "depth": -2,
+                "tileset": "tileset_foliage",
+                "tile": 1
+            }
+        ]
+    },
+    "11;-11": {
+        "pos": [
+            11,
+            -11
+        ],
+        "tiles": [
+            {
+                "depth": -2,
+                "tileset": "tileset_foliage",
+                "tile": 8
+            }
+        ]
+    },
+    "15;-13": {
+        "pos": [
+            15,
+            -13
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 0
+            }
+        ]
+    },
+    "15;-12": {
+        "pos": [
+            15,
+            -12
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 3
+            }
+        ]
+    },
+    "15;-11": {
+        "pos": [
+            15,
+            -11
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 3
+            }
+        ]
+    },
+    "17;-9": {
+        "pos": [
+            17,
+            -9
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 8
+            }
+        ]
+    },
+    "17;-13": {
+        "pos": [
+            17,
+            -13
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 2
+            }
+        ]
+    },
+    "16;-13": {
+        "pos": [
+            16,
+            -13
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 1
+            }
+        ]
+    },
+    "17;-12": {
+        "pos": [
+            17,
+            -12
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 5
+            }
+        ]
+    },
+    "17;-11": {
+        "pos": [
+            17,
+            -11
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 5
+            }
+        ]
+    },
+    "17;-10": {
+        "pos": [
+            17,
+            -10
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 5
+            }
+        ]
+    },
+    "16;-12": {
+        "pos": [
+            16,
+            -12
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "16;-11": {
+        "pos": [
+            16,
+            -11
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "16;-10": {
+        "pos": [
+            16,
+            -10
+        ],
+        "tiles": [
+            {
+                "depth": -5,
+                "tileset": "tileset_rock_background",
+                "tile": 4
+            }
+        ]
+    },
+    "20;-12": {
+        "pos": [
+            20,
+            -12
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 9
+            }
+        ]
+    },
+    "20;-13": {
+        "pos": [
+            20,
+            -13
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            }
+        ]
+    },
+    "20;-14": {
+        "pos": [
+            20,
+            -14
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            }
+        ]
+    },
+    "20;-15": {
+        "pos": [
+            20,
+            -15
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            }
+        ]
+    },
+    "20;-16": {
+        "pos": [
+            20,
+            -16
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            }
+        ]
+    },
+    "20;-17": {
+        "pos": [
+            20,
+            -17
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            }
+        ]
+    },
+    "20;-18": {
+        "pos": [
+            20,
+            -18
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            }
+        ]
+    },
+    "20;-19": {
+        "pos": [
+            20,
+            -19
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            }
+        ]
+    },
+    "20;-20": {
+        "pos": [
+            20,
+            -20
+        ],
+        "tiles": [
+            {
+                "depth": 0,
+                "tileset": "tileset_grassland",
+                "tile": 6
+            }
+        ]
+    },
+    "8;-11": {
+        "pos": [
+            8,
+            -11
+        ],
+        "tiles": [
+            {
+                "depth": 1,
+                "tileset": "finish",
+                "tile": 0
+            }
+        ]
+    }
+}
