@@ -1,469 +1,238 @@
-"""
-This file contains main game loop!
-This is the script supposed to be run to play the game. 
-Made by Samuel Koribanič!
-"""
+"""MindTaker: the original platformer, running at a fixed 60 physics steps/second."""
 
-
-# ALL IMPORTS ----------------------------------------------------------------------------------------------
-import pygame 
-import sys 
-import os
+import argparse
 import json
+from pathlib import Path
+import pygame
 
-import data.global_functions as functions
-import data.world_data as world_data
-import data.entities as entities
+from data import entities, global_functions as functions, world_data
 from data.debug import debug
+from data.tile_world import TileWorld
 
-
-def render_tiles(surface, tile_map, tilesets, tileset_dat, camera_offset):
-    
-    """
-    Render all tiles that are within screen borders.
-    """
-
-    tile_size = 20
-
-    to_render = []
-    render_box = [int(surface.get_width() / tile_size) + 5, int(surface.get_height() / tile_size) + 6]
-
-    for y in range(render_box[1]):
-            y += int(camera_offset[1] / tile_size) - 4
-
-            for x in range(render_box[0]):
-                x += int(camera_offset[0] / tile_size) - 4
-
-                pos = f"{x};{y}"
-
-                if pos in tile_map:
-                    for tile in tile_map[pos]["tiles"]:
-                        to_render.append([tile["depth"], tile_map[pos]["pos"][1], tile_map[pos]["pos"][0], tile["tileset"], tile["tile"]])
-
-    to_render.sort()
-
-    for image in to_render:
-        
-        offset = [0,0]
-        try:
-            tile_attributes = tileset_dat[image[3]][image[4]]
-
-        except KeyError:
-            tile_attributes = []
-
-        if 'offset_x' in tile_attributes:
-            offset[0] = tile_attributes['offset_x']
-        if 'offset_y' in tile_attributes:
-            offset[1] = tile_attributes['offset_y']
-        if 'invisible' not in tile_attributes:
-
-            surface.blit(tilesets[image[3]][image[4]], (image[2] * tile_size - camera_offset[0] + offset[0], image[1] * tile_size - camera_offset[1] + offset[1]))
-
-    return to_render
-
-
-def list_to_ints(list_):
-
-    """
-    Makes all strings in list integers.
-    """
-
-    new_list = list_.copy()
-    for i in range(len(new_list)):
-        new_list[i] = int(new_list[i])
-    return new_list
-
-
-def normalize(num, amount):
-
-    """
-    Normalizes value to certain fixed amount.
-    """
-
-
-    if num > amount:
-        num -= amount
-    elif num < -amount:
-        num += amount
-    else:
-        num = 0
-    return num
-
+MAIN_PATH = Path(__file__).resolve().parent
+GAME_SIZE = (480, 270)
+FIXED_STEP = 1 / 60
 animation_database = {}
-class animation_obj(object):
 
+
+class animation_obj:
     def __init__(self, x, y, animation_id, flip=False):
-        self.id = animation_id
-        self.timer = 0
-        img = self.get_image()
-        self.x = x - int(img.get_width() / 2)
-        self.y = y - int(img.get_height() / 2)
-        self.flip = flip
+        self.id, self.timer, self.flip = animation_id, 0, flip
+        if animation_id not in animation_database:
+            path = MAIN_PATH / 'data' / 'images' / 'animations' / animation_id
+            speed = int((path / 'speed.txt').read_text())
+            frames = [functions.load_image(str(image)) for image in sorted(path.glob('*.png'))]
+            if speed <= 0 or not frames:
+                raise ValueError(f'Invalid animation: {animation_id}')
+            animation_database[animation_id] = (speed, frames)
+        image = self.get_image()
+        self.x, self.y = x - image.get_width() // 2, y - image.get_height() // 2
 
     def get_image(self):
-        global animation_database
-
-        """
-        Returns current image in animation.
-        """
-
-        if self.id not in animation_database:
-
-            path = f"data/images/animations/{self.id}/"
-            image_list = os.listdir(path)
-            image_list.sort()
-
-            file = open(f"{path}speed.txt")
-            speed = int(file.read())
-            file.close()
-            
-            animation_database[self.id] = [speed, []]
-            for image in image_list:
-                if image[-4:] == '.png':
-                    animation_database[self.id][1].append(functions.load_image(path + image))
-
-        animation_data = animation_database[self.id]
-        frame_num = int(self.timer / animation_data[0])
-
-        try:
-            return animation_data[1][frame_num]
-        except IndexError:
-            return animation_data[1][0]
+        speed, frames = animation_database[self.id]
+        return frames[min(self.timer // speed, len(frames) - 1)]
 
     def change_frame(self, amount):
-
-        """
-        Changes frame based on time elapsed.
-        """
-
         self.timer += amount
+        speed, frames = animation_database[self.id]
+        return 'delete' if self.timer >= len(frames) * speed else None
 
-        if self.timer >= len(animation_database[self.id][1]) * animation_database[self.id][0]:
-            return "delete"
-        else:
-            return None
-
-    def render(self, surface,offset):
-
-        """
-        Renders properly fliped image on position. 
-        """
-
-        if self.flip == False:
-            surface.blit(self.get_image(), (self.x - offset[0], self.y - offset[1]))
-        else:
-            surface.blit(pygame.transform.flip(self.get_image(), True, False), (self.x - offset[0], self.y - offset[1]))
+    def render(self, surface, offset):
+        image = entities.flip(self.get_image(), self.flip)
+        surface.blit(image, (self.x - offset[0], self.y - offset[1]))
 
 
-# Main Loop ------------------------------------------------------------------------------------------------
-def main(surface):
+class Game:
+    def __init__(self, level=None, size=(960, 540)):
+        pygame.init()
+        try:
+            self.screen = pygame.display.set_mode(size)
+            pygame.display.set_caption('MindTaker v: alpha-1.0')
+            self.surface = pygame.Surface(GAME_SIZE).convert()
+            pygame.display.set_icon(functions.load_image(str(MAIN_PATH / 'data/images/game_icon.png')))
+            self.font = pygame.font.Font(str(MAIN_PATH / 'data/font/game_font.ttf'), 8)
+            tiles_path = str(MAIN_PATH / 'data/images/tilesets') + '/'
+            tilesets = world_data.load_tilesets(tiles_path)
+            attributes = world_data.load_tileset_data(tiles_path)
+            path = Path(level) if level else MAIN_PATH / 'data/save1.json'
+            self.spawn, self.borders, finish = world_data.load_world_data(path)
+            with path.open(encoding='utf-8') as source:
+                self.world = TileWorld(json.load(source), tilesets, attributes)
+            player_path = str(MAIN_PATH / 'data/images/player')
+            self.idle = entities.animation_sequence([[0, 40], [1, 20]], player_path + '/idle/stand_')
+            self.run_animation = entities.animation_sequence([[i, 4] for i in range(6)], player_path + '/run/run_')
+            self.jump_image = functions.load_image(player_path + '/jump.png')
+            self.spin_image = functions.load_image(player_path + '/spin.png')
+            self.background = functions.load_image(str(MAIN_PATH / 'data/images/backgrounds/world_1.png'))
+            self.player = entities.entity(0, 0, 12, 15)
+            self.player.obj.setup_hitbox(4, 10, 7, 7)
+            self.player.set_animation_tags(['loop'])
+            self.finish = pygame.Rect(finish[0] * 20 + 1, finish[1] * 20 - 6, 20, 20)
+            self.clock = pygame.time.Clock()
+            self.held = set()
+            self.running = True
+            self.accumulator = 0
+            self.mouse = (-100, -100)
+            self.restart()
+        except Exception:
+            pygame.quit()
+            raise
 
-    mouse_pos = (-100, -100)
+    def restart(self):
+        self.player.set_pos(self.spawn[0] * 20 + 2, self.spawn[1] * 20 - 7)
+        self.player.set_animation(self.idle)
+        self.player.set_image(self.jump_image)
+        self.player.rotation = 0
+        self.player.flip = False
+        self.momentum = [0, 0]
+        self.jumps, self.air_time, self.spin_timer = 2, 0, 0
+        self.dead = False
+        self.effects = []
+        self.camera = list(self.camera_target())
 
-    tilesets = world_data.load_tilesets(f"{MAIN_PATH}/data/images/tilesets/")
-    tileset_data = world_data.load_tileset_data(f"{MAIN_PATH}/data/images/tilesets/")
+    def camera_target(self):
+        left, bottom, right = self.borders
+        x = max(left, min(self.player.x - GAME_SIZE[0] // 2 + 7, right - GAME_SIZE[0]))
+        y = min(self.player.y - GAME_SIZE[1] // 2 + 14, bottom - GAME_SIZE[1])
+        return x, y
 
-    world_save = "save1"
+    def jump(self):
+        if self.dead or self.jumps <= 0:
+            return
+        self.effects.append(animation_obj(self.player.x + 8, self.player.y + 2, 'jump'))
+        self.jumps -= 1
+        self.momentum[1] = -6
+        if self.jumps == 0:
+            self.player.image = self.spin_image
+            self.spin_timer = -15 if self.player.flip else 15
 
-    spawn, borders, finish = world_data.load_world_data(f"{MAIN_PATH}/data/{world_save}.json")
-
-    with open(f"{MAIN_PATH}/data/{world_save}.json") as file:
-        tile_map = json.load(file)
-
-    main_hero = "player"
-
-    player_idle_anim = entities.animation_sequence([[0, 40], [1, 20]], f"{MAIN_PATH}/data/images/{main_hero}/idle/stand_")
-    player_run_anim = entities.animation_sequence([[0, 4], [1, 4], [2, 4], [3, 4], [4, 4], [5, 4]], f"{MAIN_PATH}/data/images/{main_hero}/run/run_")
-
-    player_jump_img = functions.load_image(f"{MAIN_PATH}/data/images/{main_hero}/jump.png")
-    player_spin_img = functions.load_image(f"{MAIN_PATH}/data/images/{main_hero}/spin.png")
-
-    player = entities.entity(spawn[0] * 20 + 2, spawn[1] * 20 - 7, 12, 15)
-    player.obj.setup_hitbox(4, 10, 7, 7)
-
-    player.set_animation(player_idle_anim)
-    player.set_animation_tags(['loop'])
-    player.set_image(player_jump_img)
-    player.set_image(player_jump_img)
-    player_movement = [0, 0]
-    player_momentum = [0, 0]
-
-    finish_entity = entities.entity(finish[0] * 20 + 1, finish[1] * 20 - 6, 20, 20)
-
-    speed = 4
-    jumps = 2
-    air_time = 0
-    spin_timer = 0
-
-    sky_colors = {"1": (0, 230, 255)}
-    background_image = functions.load_image(f"{MAIN_PATH}/data/images/backgrounds/world_1.png")
-
-    world = "1"
-
-    camera_offset = [0, 0]
-
-    dead = False
-    paused = False
-
-    right, left = False, False
-
-    tile_rects = None
-
-    animation_objs = []
-
-    run = True
-    while run:
-
-        # Transform mouse position according real res / visual res -----------------------------------------
-        mouse_pos = pygame.mouse.get_pos()
-        mouse_pos = (int(mouse_pos[0] * (GAME_WIDTH / SCREEN_WIDTH)),
-                     int(mouse_pos[1] * (GAME_HEIGHT / SCREEN_HEIGHT)))
-
-        # Binds --------------------------------------------------------------------------------------------
+    def events(self):
         for event in pygame.event.get():
-
             if event.type == pygame.QUIT:
-                run = False
-                pygame.display.quit()
-                sys.exit()
+                self.running = False
+            elif event.type == pygame.KEYDOWN and not getattr(event, 'repeat', False):
+                if event.key in (pygame.K_F1, pygame.K_ESCAPE):
+                    self.running = False
+                elif event.key == pygame.K_r:
+                    self.restart()
+                elif event.key == pygame.K_SPACE:
+                    self.jump()
+                if event.key in (pygame.K_a, pygame.K_d, pygame.K_LEFT, pygame.K_RIGHT):
+                    self.held.add(event.key)
+                    left = event.key in (pygame.K_a, pygame.K_LEFT)
+                    self.effects.append(animation_obj(self.player.x + 8, self.player.y + 2, 'turn', left))
+            elif event.type == pygame.KEYUP:
+                self.held.discard(event.key)
+            elif event.type == pygame.WINDOWFOCUSLOST:
+                self.held.clear()
+            elif event.type == pygame.MOUSEMOTION:
+                width, height = self.screen.get_size()
+                self.mouse = (int(event.pos[0] * GAME_SIZE[0] / width),
+                              int(event.pos[1] * GAME_SIZE[1] / height))
 
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_F1:
-                    run = False
-                    pygame.display.quit()
-                    sys.exit()
-
-                if event.key == pygame.K_d:
-                    animation_objs.append(animation_obj(player.x + 8, player.y + 2, 'turn'))
-                    right = True
-
-                if event.key == pygame.K_a:
-                    animation_objs.append(animation_obj(player.x + 8, player.y + 2, 'turn', True))
-                    left = True
-
-                if event.key == pygame.K_SPACE:
-                    if dead == False:
-                        if jumps > 0:
-                            animation_objs.append(animation_obj(player.x + 8, player.y + 2, 'jump'))
-                            jumps -= 1
-                            player_momentum[1] = -6
-                            if jumps == 0:
-                                player.image = player_spin_img
-                                if player.flip == True:
-                                    spin_timer = -15
-                                else:
-                                    spin_timer = 15
-                    
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_d:
-                    right = False
-                if event.key == pygame.K_a:
-                    left = False
-
-
-            if event.type == pygame.MOUSEMOTION:
-                mouse_pos = pygame.mouse.get_pos()
-
-
-        # Creating background
-        surface.fill(sky_colors[world])
-
-        background_x = -1 * ((camera_offset[0] / 8) % 400)
-
-        surface.blit(background_image, (background_x, (-camera_offset[1] + borders[1] - 190) / 8))
-        surface.blit(background_image, (background_x + 400, (-camera_offset[1] + borders[1] - 190) / 8))
-
-
-        # Move camera based on player position
-        target_x = player.x - int(surface.get_width() / 2) + 7
-        target_y = player.y - int(surface.get_height() / 2) + 14
-
-        if target_x < borders[0]: # handle left border
-            target_x = borders[0]
-
-        if target_x + surface.get_width() > borders[2]: # handle right border
-            target_x = borders[2] - surface.get_width()
-
-        if target_y + surface.get_height() > borders[1]: # handle bottom border
-            target_y = borders[1] - surface.get_height()
-
-        if tile_rects == None:
-            camera_offset[0] = target_x
-            camera_offset[1] = target_y
-
-        if dead == False:
-            camera_offset[0] += (target_x - camera_offset[0]) / 13
-            camera_offset[1] += (target_y - camera_offset[1]) / 13
-
-
-        # Render tiles
-        rendered = render_tiles(surface, tile_map, tilesets, tileset_data, list_to_ints(camera_offset))
-        tile_rects = []
-
-
-        # Get colliding tiles
-        player_speed_multiplier = 1
-        ramps = []
-        for tile in rendered:
-            collisions = True
-            ramp = 0
-            try:
-                tile_attributes = tileset_data[tile[3]][tile[4]]
-                if 'no_collide' in tile_attributes:
-                    collisions = False
-                if 'ramp' in tile_attributes:
-                    ramp = tile_attributes['ramp']
-            except KeyError:
-                pass
-            if collisions == True:
-                if ramp == 0:
-                    tile_rects.append(pygame.Rect(tile[2] * 20, tile[1] * 20, 20, 20))
-                else:
-                    ramps.append([tile[2] * 20, tile[1] * 20, ramp])
-    
-
-        # Update player position
-        player_movement = [0,0]
-        player_movement[0] += player_momentum[0] * player_speed_multiplier
-        player_movement[1] += player_momentum[1] * player_speed_multiplier
-
-        if dead == False:
-            player_momentum[0] = normalize(player_momentum[0], 0.25)
-
-        if dead == False:
-            if abs(player_momentum[0]) < 4:
-                if right == True:
-                    player_movement[0] += speed * player_speed_multiplier
-                if left == True:
-                    player_movement[0] -= speed * player_speed_multiplier
-
-        player_momentum[1] += 0.45
-        if player_momentum[1] > 7:
-            player_momentum[1] = 7
-
-
-        # Handle collisions
-        if tile_rects != None:
-            if paused == False:
-
-                if dead == False:
-                    player_collisions = player.move(player_movement, tile_rects, ramps)
-                else:
-                    player_collisions = player.move(player_movement, [], [])
-
-                if player_collisions['bottom'] == True:
-                    jumps = 2
-                    player_momentum[1] = 0
-                    air_time = 0
-                    player.rotation = 0
-
-                elif player_collisions['slant_bottom'] == True:
-                    jumps = 2
-                    air_time = 0
-                    player.rotation = 0
-
-                else:
-                    air_time += 1
-
-
-        # Handle current player image
-        if player_movement[0] != 0:
-            player.animation = player_run_anim
+    def update(self):
+        if not self.dead:
+            target = self.camera_target()
+            for axis in (0, 1):
+                self.camera[axis] += (target[axis] - self.camera[axis]) / 13
+        movement = self.momentum.copy()
+        if not self.dead:
+            value = self.momentum[0]
+            self.momentum[0] = max(0, value - 0.25) if value > 0 else min(0, value + 0.25)
+            if abs(self.momentum[0]) < 4:
+                right = bool(self.held & {pygame.K_d, pygame.K_RIGHT})
+                left = bool(self.held & {pygame.K_a, pygame.K_LEFT})
+                movement[0] += 4 * (right - left)
+        self.momentum[1] = min(self.momentum[1] + 0.45, 7)
+        area = self.player.obj.rect.union(self.player.obj.rect.move(int(movement[0]), int(movement[1]))).inflate(2, 2)
+        solids, ramps = self.world.collision_tiles(area) if not self.dead else ([], [])
+        collisions = self.player.move(movement, solids, ramps)
+        if collisions['bottom'] or collisions['slant_bottom']:
+            self.jumps, self.air_time = 2, 0
+            self.momentum[1] = 0
+            self.player.rotation = 0
         else:
-            player.animation = player_idle_anim
-        
-        if air_time > 6:
-            player.animation = None
-        
-        if player_movement[0] < 0:
-            player.flip = True
-        elif player_movement[0] > 0:
-            player.flip = False
-    
-        if spin_timer > 0:
-            spin_timer -= 1
-            player.rotation -= 24
-
-        elif spin_timer < 0:
-            spin_timer += 1
-            player.rotation += 24
+            self.air_time += 1
+        if collisions['top'] and self.momentum[1] < 0:
+            self.momentum[1] = 0
+        self.player.animation = self.run_animation if movement[0] else self.idle
+        if self.air_time > 6:
+            self.player.animation = None
+        if movement[0]:
+            self.player.flip = movement[0] < 0
+        if self.spin_timer:
+            turn = 1 if self.spin_timer > 0 else -1
+            self.spin_timer -= turn
+            self.player.rotation -= 24 * turn
         else:
-            player.image = player_jump_img
+            self.player.image = self.jump_image
+        self.player.change_frame(1)
+        if self.dead:
+            self.player.rotation -= 24
+        if self.player.y > self.borders[1]:
+            if not self.dead:
+                self.dead = True
+                self.momentum = [3, -8]
+            elif self.player.y > self.borders[1] + GAME_SIZE[1]:
+                self.restart()
+                return
+        x = max(self.borders[0], min(self.player.x, self.borders[2] - 15))
+        if x != self.player.x:
+            self.player.set_pos(x, self.player.y)
+        if not self.dead and self.player.obj.rect.colliderect(self.finish):
+            self.restart()
+            return
+        self.effects = [effect for effect in self.effects if effect.change_frame(1) is None]
 
-        player.change_frame(1)
+    def render(self, show_debug=True):
+        self.surface.fill((0, 230, 255))
+        camera = [int(value) for value in self.camera]
+        background_x = -((self.camera[0] / 8) % 400)
+        background_y = (-self.camera[1] + self.borders[1] - 190) / 8
+        for x in (background_x, background_x + 400):
+            self.surface.blit(self.background, (x, background_y))
+        self.world.render(self.surface, camera)
+        self.player.display(self.surface, camera)
+        for effect in self.effects:
+            effect.render(self.surface, camera)
+        if show_debug:
+            debug(self.surface, self.font, self.mouse, round(self.clock.get_fps(), 2))
 
-        if dead == True:
-            player.rotation -= 24
-        
+    def frame(self, elapsed):
+        self.events()
+        if not self.running:
+            return False
+        self.accumulator += min(max(elapsed, 0), 0.25)
+        while self.accumulator + 1e-12 >= FIXED_STEP:
+            self.update()
+            self.accumulator -= FIXED_STEP
+        self.render()
+        pygame.transform.scale(self.surface, self.screen.get_size(), self.screen)
+        pygame.display.flip()
+        return True
 
-        # Handle border collision
-        if player.y > borders[1]:
-            if dead == False:
-                dead = True
-                player_momentum = [3, -8]
+    def run(self):
+        while self.frame(self.clock.tick(60) / 1000):
+            pass
 
-        if player.x < borders[0]:
-            player.x = borders[0]
-            player.obj.rect.x = borders[0]
-            player.obj.x = borders[0]
-
-        if player.x + 15 > borders[2]:
-            player.x = borders[2] - 15
-            player.obj.rect.x = borders[2] - 15
-            player.obj.x = borders[2] - 15
-
-
-        # Blit entities 
-        player.display(surface, list_to_ints(camera_offset))
-
-        if player.obj.rect.colliderect(finish_entity.obj.rect):
-            player.set_pos(spawn[0] * 20 + 2, spawn[1] * 20 - 7)
-            player_momentum = [0, 0]
-
-        for obj in animation_objs:
-            obj.render(surface, list_to_ints(camera_offset))
-            if obj.change_frame(1) != None:
-                animation_objs.remove(obj)
-
-
-        debug(surface, FONT, mouse_pos, round(MAIN_CLOCK.get_fps(), 2))
-
-        # Update -------------------------------------------------------------------------------------------
-        SCREEN.blit(pygame.transform.scale(surface, (SCREEN_WIDTH, SCREEN_HEIGHT)), (0, 0))
-        pygame.display.update()
-        elapsed_time = MAIN_CLOCK.tick(60) / 1000
- 
-
-# GLOBAL ---------------------------------------------------------------------------------------------------
-if __name__ == "__main__":
-
-
-    # Setup pygame/window ----------------------------------------------------------------------------------
-    GAME_NAME = "MindTaker"
-    VERSION = "alpha-1.0"
-    MAIN_PATH = os.path.dirname(os.path.abspath(__file__))
-
-    pygame.init()
-    pygame.font.init()
-
-    MAIN_CLOCK = pygame.time.Clock()
-
-    SCREEN_WIDTH = 1920 // 2
-    SCREEN_HEIGHT = 1080 // 2
-    GAME_WIDTH = 480
-    GAME_HEIGHT = 270
-
-    SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    GAME_WINDOW = pygame.Surface((GAME_WIDTH, GAME_HEIGHT))
-    pygame.display.set_caption(f"{GAME_NAME} v: {VERSION}")
-    pygame.display.set_icon(functions.load_image(f"{MAIN_PATH}/data/images/game_icon.png"))
-
-    FONT = pygame.font.Font(f"{MAIN_PATH}/data/font/game_font.ttf", 8)
+    def close(self):
+        pygame.quit()
 
 
-    # Run Game ---------------------------------------------------------------------------------------------
-    main(GAME_WINDOW)
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--level', type=Path, help='JSON map from the level editor')
+    args = parser.parse_args()
+    game = None
+    try:
+        game = Game(level=args.level)
+        game.run()
+    except (OSError, ValueError, pygame.error) as error:
+        parser.exit(1, f'Cannot start game: {error}\n')
+    finally:
+        if game is not None:
+            game.close()
 
-    # Close ------------------------------------------------------------------------------------------------
-    pygame.quit()
-    sys.exit()
+
+if __name__ == '__main__':
+    main()
